@@ -1,17 +1,16 @@
-var express = require('express');
+const express = require("express");
 
-var app = express();
+const app = express();
 
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
-app.get('/', function(req, res) {
-
-    res.sendfile(__dirname + "/index.html");
-	   // res.status(200).send('Hello world');
+app.get("/", function(req, res) {
+  // res.sendfile(__dirname + "/index.html");
+  // res.status(200).send('Hello world');
 });
 
 app.listen(PORT, function() {
-	    console.log('Server is running on PORT:',PORT);
+  console.log("Server is running on PORT:", PORT);
 });
