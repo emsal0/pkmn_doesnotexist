@@ -1,0 +1,17 @@
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+}
+
+#title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background: #3c5a9c;
+  color: white;
+
+  height: 64px;
+  padding: 16px;
+}
