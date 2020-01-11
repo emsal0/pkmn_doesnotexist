@@ -1,8 +1,8 @@
 # What's that pokemon?
-This pokemon does not exist! Generate your own, unique pokemon.
+Generate your own unique pokemon.
 
 *some_photo_demo*
-*url*
 
-## Installation procedures
+You can find the demo [here.](http://this-pokemon-does-not-exist.appspot.com/)
+
 
