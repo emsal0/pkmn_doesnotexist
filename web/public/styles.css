@@ -1,17 +1,99 @@
 body {
   font-family: "Source Sans Pro", sans-serif;
   margin: 0;
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: black;
+  color: white;
 }
 
 #title-container {
   display: flex;
+  flex: 0 1 auto;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
   background: #3c5a9c;
-  color: white;
 
   height: 64px;
   padding: 16px;
+}
+
+#body-container {
+  flex: 1 1 auto;
+  background: black;
+}
+
+#image-container {
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#result-image {
+  height: 500px;
+  width: 500px;
+}
+
+#naming-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#naming-input {
+  font-size: 3em;
+  background: transparent;
+  text-align: center;
+  border: none;
+  outline: none;
+  caret-color: white;
+  color: white;
+}
+
+#naming-button {
+  transition-property: background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+
+  text-transform: uppercase;
+  background: rgb(2, 105, 173);
+  padding: 16px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+#naming-button:hover {
+  background: rgb(2, 105, 173, 0.7);
+}
+
+#naming-button:active {
+  background: rgb(2, 105, 173, 0.5);
+}
+
+#generate-button {
+  transition-property: background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+
+  text-transform: uppercase;
+  background: rgb(248, 196, 3);
+  padding: 16px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+#generate-button:hover {
+  background: rgb(248, 196, 3, 0.7);
+}
+
+#generate-button:active {
+  background: rgb(248, 196, 3, 0.5);
 }
