@@ -1,6 +1,6 @@
 const { spawn } = require("child_process");
 
-const mlNetProcess = spawn("python3", ["get_pokemon.py", ...types], {
+const mlNetProcess = spawn("python3", ["get_pokemon.py", "normal"], {
   cwd: "../ml/",
 });
 
