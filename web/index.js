@@ -36,7 +36,9 @@ app.post("/api/get-image", function(req, res) {
   if (req.body.type1) types.push(req.body.type1);
   if (req.body.type1) types.push(req.body.type2);
 
-  const mlNetProcess = spawn("python3", ["../ml/get_pokemon.py", ...types]);
+  const mlNetProcess = spawn("python3", ["get_pokemon.py", ...types], {
+    cwd: "../ml/",
+  });
 
   mlNetProcess.stdout.on("data", function(data) {
     res.send(data.toString());

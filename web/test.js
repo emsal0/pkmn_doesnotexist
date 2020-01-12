@@ -1,6 +1,8 @@
 const { spawn } = require("child_process");
 
-const mlNetProcess = spawn("python3", ["../ml/get_pokemon.py", "normal"]);
+const mlNetProcess = spawn("python3", ["get_pokemon.py", ...types], {
+  cwd: "../ml/",
+});
 
 mlNetProcess.stdout.on("data", function(data) {
   console.log(data.toString());
