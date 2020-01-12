@@ -80,5 +80,57 @@ class CVAE(tf.keras.Model):
 
     return logits
 
+train_image_data = np.load('pokemon_sprites/black-white/pkmn_sprites.npy')
+train_images = train_image_data.reshape(train_image_data.shape[0], 96, 96, 4).astype('float32')
+
+# Normalizing the images to the range of [0., 1.]
+train_images /= 255.
+
+# get all the fire pokemon
+
+
+# Binarization
+train_images[train_images >= .5] = 1.
+train_images[train_images < .5] = 0.
+
+a = [4,5,6,37,38,58,59,77,78,126,136,146,155,156,157,218,219,228,229,240,244,250,255,256,257,322,323,324,390,391,392,467,485,494,498,499,500,513,514,554,555,607,608,609,631,636]
+for i in range(len(a)):
+    if a[i] <= 201:
+        a[i] -= 1
+    else:
+        a[i] -= 2
+
+fire_pkmn = train_images[np.array(a), :, :, :]
+# fire_pkmn = train_images[:, :, :, :]
+# fire_pkmn_mean = np.mean(fire_pkmn, axis=1)
+# fire_pkmn_cov = np.cov(fire_pkmn)
+
+# fire_pkmn_sample = np.random.multivariate_normal(fire_pkmn_mean, fire_pkmn_cov)
+
 x = CVAE(latent_dim=50)
 x.load_weights(filepath='vae_model/d')
+y = x.encode(fire_pkmn)
+# print(y[0].shape)
+
+zm = np.mean(y[0], axis=0)
+zc = np.cov(np.transpose(y[0]))
+print(zc, zc.shape)
+z = np.random.multivariate_normal(zm, zc).reshape(1, -1).astype('float32')
+# print(z)
+
+zv = np.mean(y[1], axis=0)
+zvv = np.cov(np.transpose(y[1]))
+zzv = np.random.multivariate_normal(zv, zvv).reshape(1, -1).astype('float32')
+print(z)
+print (z.shape)
+
+# print(y, y.size)
+zt = tf.convert_to_tensor(z)
+# print(zt, zt.size)
+
+decoded = x.decode((tf.convert_to_tensor(z), tf.convert_to_tensor(zzv)))
+decoded = x.sample()
+fig = plt.figure()
+plt.imshow(decoded[0])
+plt.show()
+# input()
