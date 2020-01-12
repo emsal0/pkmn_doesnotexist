@@ -1,13 +1,15 @@
 body {
-  font-family: "Source Sans Pro", sans-serif;
-  margin: 0;
-
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  background: black;
+
+  min-width: 690px;
+
+  height: 100vh;
+  margin: 0;
+  overflow: visible;
+  font-family: "Source Sans Pro", sans-serif;
   color: white;
+  background: black;
 }
 
 #title-container {
@@ -17,10 +19,10 @@ body {
   justify-content: center;
   align-items: center;
 
-  background: #3c5a9c;
-
   height: 64px;
   padding: 16px;
+
+  background: #3c5a9c;
 }
 
 #body-container {
@@ -29,44 +31,30 @@ body {
 }
 
 #image-container {
-  margin: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 16px;
 }
 
 #result-image {
-  height: 500px;
-  width: 500px;
 }
 
 #naming-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#naming-input {
-  font-size: 3em;
-  background: transparent;
-  text-align: center;
-  border: none;
-  outline: none;
-  caret-color: white;
-  color: white;
+  position: relative;
+  height: 92px;
+  overflow: hidden;
 }
 
 #naming-button {
-  transition-property: background;
+  width: 100%;
+  color: white;
+
+  background: rgb(2, 105, 173);
+
   transition-timing-function: ease-in-out;
   transition-duration: 250ms;
-
-  text-transform: uppercase;
-  background: rgb(2, 105, 173);
-  padding: 16px;
-  border: none;
-  outline: none;
-  color: white;
+  transition-property: background, margin-left;
 }
 
 #naming-button:hover {
@@ -77,17 +65,86 @@ body {
   background: rgb(2, 105, 173, 0.5);
 }
 
-#generate-button {
-  transition-property: background;
-  transition-timing-function: ease-in-out;
-  transition-duration: 250ms;
+#naming-button.hide {
+  margin-left: 100%;
 
-  text-transform: uppercase;
-  background: rgb(248, 196, 3);
-  padding: 16px;
+  background: rgb(2, 105, 173);
+  transition-timing-function: ease-in;
+  transition-duration: 500ms;
+  transition-property: margin-left;
+}
+
+#naming-input-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#naming-input {
+  flex: 1 1 60%;
+  height: 92px;
+  padding: 0;
+
+  font-size: 3em;
+  text-align: center;
+  color: white;
+  background: transparent;
+  background: #202020;
   border: none;
   outline: none;
-  color: white;
+  caret-color: white;
+}
+
+#naming-input-container.hide {
+  visibility: hidden;
+}
+
+#naming-input-container.editable {
+  z-index: 0;
+}
+
+#submit-name-button {
+  flex: 1 1 20%;
+  padding-right: 16px;
+  padding-left: 16px;
+  background: rgb(0, 200, 83);
+}
+
+#submit-name-button:hover {
+  background: rgba(0, 200, 83, 0.7);
+}
+
+#submit-name-button:active {
+  background: rgba(0, 200, 83, 0.5);
+}
+
+#nvm-button {
+  flex: 1 1 20%;
+  padding-right: 16px;
+  padding-left: 16px;
+  background: rgb(213, 0, 0);
+}
+
+#nvm-button:hover {
+  background: rgba(213, 0, 0, 0.7);
+}
+
+#nvm-button:active {
+  background: rgba(213, 0, 0, 0.5);
+}
+
+#generate-button {
+  background: rgb(248, 196, 3);
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: background;
 }
 
 #generate-button:hover {
@@ -96,4 +153,18 @@ body {
 
 #generate-button:active {
   background: rgb(248, 196, 3, 0.5);
+}
+
+button {
+  height: 92px;
+  padding-top: 16px;
+  padding-right: 8px;
+  padding-bottom: 16px;
+  padding-left: 8px;
+
+  color: white;
+
+  text-transform: uppercase;
+  border: none;
+  outline: none;
 }

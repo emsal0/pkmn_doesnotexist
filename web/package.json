@@ -12,5 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "postcss-cli": "^7.1.0",
+    "postcss-sorting": "^5.0.1"
   }
 }
