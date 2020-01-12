@@ -1,4 +1,5 @@
 const resultImage = document.querySelector("#result-image");
+const loadingDiv = document.querySelector("#image-loading");
 const namingButton = document.querySelector("#naming-button");
 const namingButtonText = document.querySelector("#naming-button h1");
 const namingInputContainer = document.querySelector("#naming-input-container");
@@ -35,6 +36,8 @@ const pkmnTypes = [
   "rock",
 ];
 
+let isLoading = false;
+
 type1DropdownText.innerHTML = pkmnTypes[getRandomInt(0, pkmnTypes.length - 1)];
 type2DropdownText.innerHTML = pkmnTypes[getRandomInt(0, pkmnTypes.length - 1)];
 
@@ -51,12 +54,12 @@ namingButton.ontransitionend = () => {
 };
 
 namingSubmitButton.onclick = () => {
+  resetAnimation();
+
   submitName(namingInput.value);
 
   namingButton.classList.add("success");
   namingButtonText.innerHTML = "It's yours";
-
-  resetAnimation();
 };
 
 namingInput.onkeyup = () => {
@@ -92,15 +95,23 @@ type2DropdownItems.forEach(dropdownItem => {
 });
 
 generateButton.onclick = () => {
-  console.log('fetching image')
-  getImage(type1DropdownText.innerHTML, type2DropdownText.innerHTML)
-    .then(res => res.text())
-    .then(base64 => {
-      console.log(base64);
-      resultImage.src = "data:image/png;base64," + base64;
-    });
-  resetAll();
+  if (!isLoading) {
+    resetAll();
+
+    isLoading = true;
+    loadingDiv.classList.add("loading");
+
+    getImage(type1DropdownText.innerHTML, type2DropdownText.innerHTML)
+      .then(res => res.text())
+      .then(base64 => {
+        isLoading = false;
+        loadingDiv.classList.remove("loading");
+        resultImage.src = "data:image/png;base64," + base64;
+      });
+  }
 };
+
+generateButton.onclick();
 
 function resetAnimation() {
   namingButton.classList.remove("hide");
@@ -119,6 +130,8 @@ function resetAll() {
 
   type1Dropdown.classList.remove("open");
   type2Dropdown.classList.remove("open");
+
+  loadingDiv.classList.remove("loading");
 }
 
 function getImage(type1, type2) {
