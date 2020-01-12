@@ -218,7 +218,7 @@ body {
 
   transition-timing-function: ease-in-out;
   transition-duration: 250ms;
-  transition-property: flex;
+  transition-property: flex, visibility;
 }
 
 .dropdown-container.open {
