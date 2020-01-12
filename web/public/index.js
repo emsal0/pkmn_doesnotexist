@@ -4,6 +4,33 @@ const namingInput = document.querySelector("#naming-input");
 const namingSubmitButton = document.querySelector("#submit-name-button");
 const namingNvmButton = document.querySelector("#nvm-button");
 const generateButton = document.querySelector("#generate-button");
+const type1DropdownButton = document.querySelector("#type1-dropdown");
+const type2DropdownButton = document.querySelector("#type2-dropdown");
+const type1DropdownText = document.querySelector("#type1-dropdown h1");
+const type2DropdownText = document.querySelector("#type2-dropdown h1");
+
+const pkmnTypes = [
+  "bug",
+  "electric",
+  "flying",
+  "ground",
+  "poison",
+  "steel",
+  "dark",
+  "fighting",
+  "ghost",
+  "ice",
+  "psychic",
+  "water",
+  "dragon",
+  "fire",
+  "grass",
+  "normal",
+  "rock",
+];
+
+type1DropdownText.innerHTML = pkmnTypes[getRandomInt(0, pkmnTypes.length - 1)];
+type1DropdownText.innerHTML = pkmnTypes[getRandomInt(0, pkmnTypes.length - 1)];
 
 namingButton.onclick = () => {
   namingButton.classList.add("hide");
@@ -37,8 +64,6 @@ generateButton.onclick = () => {
   reset();
 };
 
-useModel();
-
 function reset() {
   namingButton.classList.remove("hide");
   namingInputContainer.classList.add("hide");
@@ -46,15 +71,6 @@ function reset() {
   namingInput.value = "";
 
   namingInputContainer.classList.remove("editable");
-}
-
-async function useModel() {
-  const model = await tf.loadGraphModel("web_model/model.json");
-  const cat = document.getElementById("cat");
-
-  const randomNoise = tf.randomNormal([1, 100]);
-
-  model.predict(randomNoise);
 }
 
 function submitName(name) {
@@ -69,4 +85,8 @@ function postData(endPoint, data) {
     },
     body: JSON.stringify(data),
   });
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
