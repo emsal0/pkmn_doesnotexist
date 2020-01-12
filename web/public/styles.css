@@ -38,6 +38,7 @@ body {
 }
 
 #result-image {
+  max-height: calc(100vh - 404px);
 }
 
 #naming-container {
