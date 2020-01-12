@@ -136,6 +136,8 @@ function resetAll() {
   type2Dropdown.classList.remove("open");
 
   loadingDiv.classList.remove("loading");
+
+  resultImage.removeAttribute("src");
 }
 
 function getImage(type1, type2) {
