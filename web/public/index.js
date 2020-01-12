@@ -22,6 +22,7 @@ namingSubmitButton.onclick = () => {
 
   reset();
 };
+
 namingInput.onkeyup = () => {
   if (event.key === "Enter") {
     namingSubmitButton.onclick();
