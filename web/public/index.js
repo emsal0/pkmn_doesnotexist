@@ -54,6 +54,11 @@ namingButton.ontransitionend = () => {
 };
 
 namingSubmitButton.onclick = () => {
+  // download image
+  fetch(resultImage.src)
+    .then(res => res.blob())
+    .then(blob => saveAs(blob, namingInput.value + ".png"));
+
   submitName(namingInput.value, resultImage.src);
 
   resetAnimation();
