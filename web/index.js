@@ -27,7 +27,7 @@ app.use(express.static(__dirname + "/public"));
  * }
  */
 app.post("/api/set-name", function(req, res) {
-  pkmnNamesCollection.insertOne({ name: req.body.name });
+  pkmnNamesCollection.insertOne({ name: req.body.name, image: req.body.image });
 });
 
 app.post("/api/get-image", function(req, res) {
@@ -36,13 +36,17 @@ app.post("/api/get-image", function(req, res) {
   if (req.body.type1) types.push(req.body.type1);
   if (req.body.type1) types.push(req.body.type2);
 
-  const process = spawn("python", ["../get_pokemon.py", ...types]);
-
-  process.stdout.on("data", function(data) {
-    // res.send(data.toString());
+  const mlNetProcess = spawn("python3", ["get_pokemon.py", ...types], {
+    cwd: "../ml/",
   });
 
-  // pkmnNamesCollection.insertOne({ name: req.body.name });
+  mlNetProcess.stdout.on("data", function(data) {
+    res.end(data.toString());
+  });
+
+  mlNetProcess.stderr.on("data", function(data) {
+    console.error(data.toString());
+  });
 });
 
 app.listen(PORT, function() {

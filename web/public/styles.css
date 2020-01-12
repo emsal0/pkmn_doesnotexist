@@ -65,6 +65,11 @@ body {
   background: rgb(2, 105, 173, 0.5);
 }
 
+#naming-button.success {
+  background: rgb(0, 200, 83);
+  pointer-events: none;
+}
+
 #naming-button.hide {
   margin-left: 100%;
 
@@ -198,11 +203,12 @@ body {
   flex-direction: column;
 
   width: 50vw;
+
+  pointer-events: none;
 }
 
 .dropdown-container {
   display: flex;
-  visibility: hidden;
 
   flex: 0;
   flex-direction: column;
@@ -215,15 +221,18 @@ body {
   border-top: solid;
   border-top-width: 5px;
   border-top-color: white;
+  visibility: hidden;
 
   transition-timing-function: ease-in-out;
   transition-duration: 250ms;
-  transition-property: flex;
+  transition-property: flex, visibility;
 }
 
 .dropdown-container.open {
   flex: 1;
   visibility: visible;
+
+  pointer-events: auto;
 }
 
 .dropdown-item {
