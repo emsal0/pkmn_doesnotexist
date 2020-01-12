@@ -33,7 +33,7 @@ to_sample_from = []
 
 def get_poke_nums(poketype):
     global to_sample_from
-    with open(f'pokemon_types/{poketype}.txt') as type_file:
+    with open('pokemon_types/%s.txt' % poketype) as type_file:
         nums = [int(line.strip()) for line in type_file.readlines()]
         for i in range(len(nums)):
             if nums[i] <= 201:
