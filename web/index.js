@@ -4,7 +4,7 @@ const { MongoClient } = require("mongodb");
 const { spawn } = require("child_process");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 const uri =
   "mongodb+srv://dbUser:dbPass@cluster0-u1ctf.gcp.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
