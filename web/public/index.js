@@ -54,10 +54,11 @@ namingButton.ontransitionend = () => {
 };
 
 namingSubmitButton.onclick = () => {
+  const fileName = namingInput.value + ".png";
   // download image
   fetch(resultImage.src)
     .then(res => res.blob())
-    .then(blob => saveAs(blob, namingInput.value + ".png"));
+    .then(blob => saveAs(blob, fileName));
 
   submitName(namingInput.value, resultImage.src);
 
