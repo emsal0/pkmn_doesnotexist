@@ -80,5 +80,5 @@ class CVAE(tf.keras.Model):
 
     return logits
 
-x = CVAE(latent_dim=50)
-x.load_weights(filepath='vae_model/d')
+MODEL = CVAE(latent_dim=50)
+MODEL.load_weights(filepath='vae_model/d')
