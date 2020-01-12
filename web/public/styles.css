@@ -140,19 +140,134 @@ body {
   background: rgba(213, 0, 0, 0.5);
 }
 
-#generate-button {
-  background: rgb(248, 196, 3);
+#types-dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: transparent;
+}
+
+.dropdown-button {
+  position: relative;
+  flex: 1 1 auto;
+
+  box-sizing: border-box;
+
+  width: 50vw;
+  height: 92px;
+
+  border: solid;
+  border-width: 5px;
+  border-color: white;
+
   transition-timing-function: ease-in-out;
   transition-duration: 250ms;
   transition-property: background;
 }
 
-#generate-button:hover {
-  background: rgb(248, 196, 3, 0.7);
+.dropdown-button .arrow-container {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#generate-button:active {
-  background: rgb(248, 196, 3, 0.5);
+.dropdown-button .arrow {
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: transform;
+}
+
+.dropdown-button .arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-container-container {
+  position: absolute;
+
+  top: 0;
+  bottom: 184px;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 50vw;
+}
+
+.dropdown-container {
+  display: flex;
+  visibility: hidden;
+
+  flex: 0;
+  flex-direction: column;
+
+  width: 50vw;
+
+  overflow: scroll;
+  background: black;
+
+  border-top: solid;
+  border-top-width: 5px;
+  border-top-color: white;
+
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: flex;
+}
+
+.dropdown-container.open {
+  flex: 1;
+  visibility: visible;
+}
+
+.dropdown-item {
+  border: solid;
+  border-width: 3px;
+  border-color: white;
+  border-right-width: 5px;
+  border-bottom: 0;
+  border-left-width: 5px;
+}
+
+.dropdown-item.select {
+}
+
+#type1-dropdown-container-container {
+  left: 0;
+}
+
+#type2-dropdown-container-container {
+  right: 0;
+}
+
+#type1-dropdown {
+}
+
+#type2-dropdown {
+}
+
+#generate-button {
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: background;
+}
+
+.yellow-button {
+  background: rgb(248, 196, 3);
+}
+
+.yellow-button:hover {
+  background: rgb(248, 196, 3, 0.7) !important;
+}
+
+.yellow-button:active {
+  background: rgb(248, 196, 3, 0.5) !important;
 }
 
 button {
