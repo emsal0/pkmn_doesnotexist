@@ -1,8 +1,9 @@
 import vae_init
 import numpy as np
-import tempfile
 import matplotlib.pyplot as plt
+import base64
 import imageio
+from io import BytesIO
 import sys
 
 args = sys.argv
@@ -82,6 +83,7 @@ else:
 fig = plt.figure()
 plt.imshow(decoded[0])
 plt.axis('off')
-tmpimg = tempfile.NamedTemporaryFile("w")
-plt.savefig(tmpimg.name)
-print(tmpimg.name)
+figfile = BytesIO()
+plt.savefig(figfile)
+figdata = base64.b64encode(figfile.getvalue())
+print(figdata)
