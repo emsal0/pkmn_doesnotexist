@@ -1,0 +1,170 @@
+body {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 690px;
+
+  height: 100vh;
+  margin: 0;
+  overflow: visible;
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  background: black;
+}
+
+#title-container {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 64px;
+  padding: 16px;
+
+  background: #3c5a9c;
+}
+
+#body-container {
+  flex: 1 1 auto;
+  background: black;
+}
+
+#image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+#result-image {
+}
+
+#naming-container {
+  position: relative;
+  height: 92px;
+  overflow: hidden;
+}
+
+#naming-button {
+  width: 100%;
+  color: white;
+
+  background: rgb(2, 105, 173);
+
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: background, margin-left;
+}
+
+#naming-button:hover {
+  background: rgb(2, 105, 173, 0.7);
+}
+
+#naming-button:active {
+  background: rgb(2, 105, 173, 0.5);
+}
+
+#naming-button.hide {
+  margin-left: 100%;
+
+  background: rgb(2, 105, 173);
+  transition-timing-function: ease-in;
+  transition-duration: 500ms;
+  transition-property: margin-left;
+}
+
+#naming-input-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#naming-input {
+  flex: 1 1 60%;
+  height: 92px;
+  padding: 0;
+
+  font-size: 3em;
+  text-align: center;
+  color: white;
+  background: transparent;
+  background: #202020;
+  border: none;
+  outline: none;
+  caret-color: white;
+}
+
+#naming-input-container.hide {
+  visibility: hidden;
+}
+
+#naming-input-container.editable {
+  z-index: 0;
+}
+
+#submit-name-button {
+  flex: 1 1 20%;
+  padding-right: 16px;
+  padding-left: 16px;
+  background: rgb(0, 200, 83);
+}
+
+#submit-name-button:hover {
+  background: rgba(0, 200, 83, 0.7);
+}
+
+#submit-name-button:active {
+  background: rgba(0, 200, 83, 0.5);
+}
+
+#nvm-button {
+  flex: 1 1 20%;
+  padding-right: 16px;
+  padding-left: 16px;
+  background: rgb(213, 0, 0);
+}
+
+#nvm-button:hover {
+  background: rgba(213, 0, 0, 0.7);
+}
+
+#nvm-button:active {
+  background: rgba(213, 0, 0, 0.5);
+}
+
+#generate-button {
+  background: rgb(248, 196, 3);
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: background;
+}
+
+#generate-button:hover {
+  background: rgb(248, 196, 3, 0.7);
+}
+
+#generate-button:active {
+  background: rgb(248, 196, 3, 0.5);
+}
+
+button {
+  height: 92px;
+  padding-top: 16px;
+  padding-right: 8px;
+  padding-bottom: 16px;
+  padding-left: 8px;
+
+  color: white;
+
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+}

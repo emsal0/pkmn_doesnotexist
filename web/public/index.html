@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>This Pokemon Does Not Exist</title>
+
+  <link rel='icon' href='favicon.ico' type='image/x-icon'>
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+</head>
+
+<body>
+  <div id="title-container">
+    <h1>This Pokemon Does Not Exist</h1>
+  </div>
+  <div id="body-container">
+    <div id="image-container">
+      <img id="result-image" />
+    </div>
+    <div id="input-container">
+
+    </div>
+  </div>
+
+  <div id="naming-container">
+    <button id="naming-button">
+      <h1>Claim it</h1>
+    </button>
+    <div id="naming-input-container" class="hide">
+      <input id="naming-input" placeholder="Give it a name" />
+
+      <button id="submit-name-button">
+        <h1>submit</h1>
+      </button>
+      <button id="nvm-button">
+        <h1>nvm</h1>
+      </button>
+
+    </div>
+  </div>
+
+  <button id="generate-button">
+    <h1>Generate</h1>
+  </button>
+  <script src="./index.js"></script>
+</body>
+
+</html>
