@@ -92,9 +92,11 @@ type2DropdownItems.forEach(dropdownItem => {
 });
 
 generateButton.onclick = () => {
+  console.log('fetching image')
   getImage(type1DropdownText.innerHTML, type2DropdownText.innerHTML)
     .then(res => res.text())
     .then(base64 => {
+      console.log(base64);
       resultImage.src = "data:image/png;base64," + base64;
     });
   resetAll();

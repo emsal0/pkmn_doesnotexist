@@ -41,7 +41,9 @@ app.post("/api/get-image", function(req, res) {
   });
 
   mlNetProcess.stdout.on("data", function(data) {
-    res.end(data.toString());
+    console.log(data.toString());
+    const dataString = data.toString()
+    res.end(dataString);
   });
 
   mlNetProcess.stderr.on("data", function(data) {
