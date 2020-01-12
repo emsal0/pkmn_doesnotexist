@@ -230,6 +230,7 @@ body {
   width: 50vw;
 
   overflow: scroll;
+  overflow-x: hidden;
   background: black;
 
   border-top: solid;
