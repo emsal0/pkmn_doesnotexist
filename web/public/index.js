@@ -54,9 +54,9 @@ namingButton.ontransitionend = () => {
 };
 
 namingSubmitButton.onclick = () => {
-  resetAnimation();
-
   submitName(namingInput.value, resultImage.src);
+
+  resetAnimation();
 
   namingButton.classList.add("success");
   namingButtonText.innerHTML = "It's yours";
