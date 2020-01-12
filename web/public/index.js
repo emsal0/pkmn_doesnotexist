@@ -101,7 +101,11 @@ generateButton.onclick = () => {
     isLoading = true;
     loadingDiv.classList.add("loading");
 
-    getImage(type1DropdownText.innerHTML, type2DropdownText.innerHTML)
+    let type1, type2;
+    if (type1DropdownText.innerHTML !== "none") type1 = type1DropdownText.innerHTML;
+    if (type2DropdownText.innerHTML !== "none") type2 = type2DropdownText.innerHTML;
+
+    getImage(type1, type2)
       .then(res => res.text())
       .then(base64 => {
         isLoading = false;
