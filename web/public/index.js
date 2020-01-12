@@ -56,7 +56,7 @@ namingButton.ontransitionend = () => {
 namingSubmitButton.onclick = () => {
   resetAnimation();
 
-  submitName(namingInput.value);
+  submitName(namingInput.value, resultImage.src);
 
   namingButton.classList.add("success");
   namingButtonText.innerHTML = "It's yours";
@@ -144,8 +144,8 @@ function getImage(type1, type2) {
   return postData("/api/get-image", { type1, type2 });
 }
 
-function submitName(name) {
-  return postData("/api/set-name", { name });
+function submitName(name, image) {
+  return postData("/api/set-name", { name, image });
 }
 
 function postData(endPoint, data) {

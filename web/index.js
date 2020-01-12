@@ -42,7 +42,7 @@ app.post("/api/get-image", function(req, res) {
 
   mlNetProcess.stdout.on("data", function(data) {
     console.log(data.toString());
-    const dataString = data.toString()
+    const dataString = data.toString();
     res.end(dataString);
   });
 
