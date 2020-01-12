@@ -1,5 +1,16 @@
 # How to use
 
+(Requires python3)
+dependencies:
+
+```
+tensorflow >= 2.x
+numpy
+imageio
+matplotlib
+```
+
+
 ```
 python get_pokemon.py {type1 (optional)} {type2 (optional)}
 ```
