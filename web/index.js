@@ -41,6 +41,7 @@ app.post("/api/get-image", function(req, res) {
   });
 
   mlNetProcess.stdout.on("data", function(data) {
+    res.type("text/plain");
     res.send(data.toString());
   });
 
