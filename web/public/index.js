@@ -1,8 +1,8 @@
 const namingButton = document.querySelector("#naming-button");
 const namingInputContainer = document.querySelector("#naming-input-container");
 const namingInput = document.querySelector("#naming-input");
-const namingSubmitInput = document.querySelector("#submit-name-button");
-const namingNvmInput = document.querySelector("#nvm-button");
+const namingSubmitButton = document.querySelector("#submit-name-button");
+const namingNvmButton = document.querySelector("#nvm-button");
 const generateButton = document.querySelector("#generate-button");
 
 namingButton.onclick = () => {
@@ -17,17 +17,26 @@ namingButton.ontransitionend = () => {
   }
 };
 
-namingSubmitInput.onclick = () => {
+namingSubmitButton.onclick = () => {
+  submitName(namingInput.value);
+
   reset();
 };
+namingInput.onkeyup = () => {
+  if (event.key === "Enter") {
+    namingSubmitButton.onclick();
+  }
+};
 
-namingNvmInput.onclick = () => {
+namingNvmButton.onclick = () => {
   reset();
 };
 
 generateButton.onclick = () => {
   reset();
 };
+
+useModel();
 
 function reset() {
   namingButton.classList.remove("hide");
@@ -47,4 +56,16 @@ async function useModel() {
   model.predict(randomNoise);
 }
 
-useModel();
+function submitName(name) {
+  return postData("/api/set-name", { name });
+}
+
+function postData(endPoint, data) {
+  return fetch(endPoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
