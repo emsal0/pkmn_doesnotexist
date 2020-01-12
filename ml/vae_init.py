@@ -5,12 +5,8 @@ import tensorflow as tf
 import os
 import time
 import numpy as np
-import glob
 import matplotlib.pyplot as plt
-import PIL
 import imageio
-
-from IPython import display
 
 class CVAE(tf.keras.Model):
   def __init__(self, latent_dim):
