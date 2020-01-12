@@ -1,5 +1,6 @@
 const resultImage = document.querySelector("#result-image");
 const namingButton = document.querySelector("#naming-button");
+const namingButtonText = document.querySelector("#naming-button h1");
 const namingInputContainer = document.querySelector("#naming-input-container");
 const namingInput = document.querySelector("#naming-input");
 const namingSubmitButton = document.querySelector("#submit-name-button");
@@ -52,7 +53,10 @@ namingButton.ontransitionend = () => {
 namingSubmitButton.onclick = () => {
   submitName(namingInput.value);
 
-  reset();
+  namingButton.classList.add("success");
+  namingButtonText.innerHTML = "It's yours";
+
+  resetAnimation();
 };
 
 namingInput.onkeyup = () => {
@@ -62,7 +66,7 @@ namingInput.onkeyup = () => {
 };
 
 namingNvmButton.onclick = () => {
-  reset();
+  resetAnimation();
 };
 
 type1DropdownButton.onclick = () => {
@@ -93,16 +97,26 @@ generateButton.onclick = () => {
     .then(base64 => {
       resultImage.src = "data:image/png;base64," + base64;
     });
-  reset();
+  resetAll();
 };
 
-function reset() {
+function resetAnimation() {
   namingButton.classList.remove("hide");
   namingInputContainer.classList.add("hide");
   namingInput.blur();
   namingInput.value = "";
 
   namingInputContainer.classList.remove("editable");
+}
+
+function resetAll() {
+  resetAnimation();
+
+  namingButton.classList.remove("success");
+  namingButtonText.innerHTML = "claim it";
+
+  type1Dropdown.classList.remove("open");
+  type2Dropdown.classList.remove("open");
 }
 
 function getImage(type1, type2) {
